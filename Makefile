@@ -1,6 +1,6 @@
 branch:=$(shell git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
 
-last_tag_on_branch:=$(shell git tag -l "${branch}.*" | tail -1)
+last_tag_on_branch:=$(shell git tag -l "${branch}.*" --sort '*authordate' | tail -1)
 
 len_last_tag:=$(shell echo ${last_tag_on_branch} | awk '{print length $0}')
 
